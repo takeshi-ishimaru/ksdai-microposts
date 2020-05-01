@@ -5,9 +5,11 @@
             <div class="media-body">
                 <div>
                     {!! link_to_route('users.show', $micropost->user->name, ['id' => $micropost->user->id]) !!} <span class="text-muted">posted at {{ $micropost->created_at }}</span>
+                    @include('favorites.button', ['user' => $user])
                 </div>
                 <div>
                     <p class="mb-0">{!! nl2br(e($micropost->content)) !!}</p>
+                    
                 </div>
                 <div>
                     @if (Auth::id() == $micropost->user_id)
